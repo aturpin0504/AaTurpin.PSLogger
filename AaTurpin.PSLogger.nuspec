@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>AaTurpin.PSLogger</id>
+    <version>1.0.0</version>
+    <authors>AaTurpin</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>https://github.com/aturpin0504/AaTurpin.PSLogger</projectUrl>
+	<readme>README.md</readme>
+    <description>PowerShell module providing thread-safe logging capabilities with multiple log levels and exception handling support</description>
+    <releaseNotes>Initial release with thread-safe logging capabilities supporting multiple log levels (Debug, Information, Warning, Error, Critical) with mutex synchronization and retry logic</releaseNotes>
+    <copyright>(c) 2025 AaTurpin. All rights reserved.</copyright>
+    <tags>powershell logging thread-safe debug error warning info critical mutex</tags>
+  </metadata>
+  <files>
+    <file src="AaTurpin.PSLogger.psm1" target="content\AaTurpin.PSLogger.psm1" />
+    <file src="AaTurpin.PSLogger.psd1" target="content\AaTurpin.PSLogger.psd1" />
+    <file src="README.md" target="README.md" />
+  </files>
+</package>
