@@ -100,10 +100,10 @@ PrivateData = @{
                'Critical'
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/aturpin0504/AaTurpin.PSLogger?tab=MIT-1-ov-file'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/aturpin0504/AaTurpin.PSLogger'
 
         # A URL to an icon representing this module.
         # IconUri = ''
