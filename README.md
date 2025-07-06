@@ -14,16 +14,22 @@ A PowerShell module providing thread-safe logging capabilities with multiple log
 
 ## Installation
 
-Install from the PowerShell Gallery:
+First, register the NuGet repository if you haven't already:
 
 ```powershell
-Install-Module -Name AaTurpin.PSLogger -Scope CurrentUser
+Register-PSRepository -Name "NuGet" -SourceLocation "https://api.nuget.org/v3/index.json" -PublishLocation "https://www.nuget.org/api/v2/package/" -InstallationPolicy Trusted
+```
+
+Then install the module:
+
+```powershell
+Install-Module -Name AaTurpin.PSLogger -Repository NuGet -Scope CurrentUser
 ```
 
 Or for all users (requires administrator privileges):
 
 ```powershell
-Install-Module -Name AaTurpin.PSLogger -Scope AllUsers
+Install-Module -Name AaTurpin.PSLogger -Repository NuGet -Scope AllUsers
 ```
 
 ## Quick Start
@@ -202,11 +208,37 @@ function Invoke-SafeOperation {
 }
 ```
 
+## Troubleshooting
+
+### Repository Registration Issues
+
+If you encounter issues with the NuGet repository registration, try:
+
+```powershell
+# Check existing repositories
+Get-PSRepository
+
+# Remove existing NuGet repository if it exists
+Unregister-PSRepository -Name "NuGet" -ErrorAction SilentlyContinue
+
+# Re-register with correct settings
+Register-PSRepository -Name "NuGet" -SourceLocation "https://api.nuget.org/v3/index.json" -PublishLocation "https://www.nuget.org/api/v2/package/" -InstallationPolicy Trusted
+```
+
+### Installation Issues
+
+If installation fails, ensure you have:
+
+- PowerShell execution policy allows module installation
+- Internet connectivity to reach api.nuget.org
+- Appropriate permissions for the installation scope
+
 ## Requirements
 
 - **PowerShell 5.1** or later
 - **Windows** (uses Windows-specific mutex implementation)
 - **Write permissions** to the specified log directory
+- **Internet access** for initial module installation
 
 ## License
 
@@ -218,7 +250,7 @@ Contributions are welcome! Please visit the [project repository](https://github.
 
 ## Release Notes
 
-### Version 1.0.0
+### Version 1.0.2
 - Initial release with thread-safe logging capabilities
 - Support for multiple log levels (Debug, Information, Warning, Error, Critical)
 - Mutex synchronization and retry logic
